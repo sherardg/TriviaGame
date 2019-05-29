@@ -24,7 +24,7 @@ var questions = [ {
     correctAnswer: "C. Solomon",
 },
     {
-    question: "What was the priority that Jesu said we should seek?",
+    question: "What was the priority that Jesus said we should seek first?",
     answers: ["A. Seek first love", "B. Seek first the kingdom of God", "C. Seek first forgiveness", "D. Seek first wisdom and knowledge"],
     correctAnswer: "B. Seek first the kingdom of God",
 },
@@ -33,8 +33,26 @@ var questions = [ {
     answers: ["A. The Parable of the Sower", "B. The Beatitude Parables", "C. The Parable of the Talents", "D. The Parable of the 10 Virgins"],
     correctAnswer: "A. The Parable of the Sower",
 },
-
-
+    {
+    question: "Where did the prophet Elijah instruct Naaman the leper to wash himself?",
+    answers: ["A. In the Temple", "B. In the Dead Sea", "C. In the River Nile", "D. In the Jordan River"],
+    correctAnswer: "D. In the Jordan River",
+},
+    {
+    question: "What were the sins committed by Samuel's two sons?",
+    answers: ["A.They worshipped other gods and disobeyed God", "B. They were dishonest and lustful", "C. They took bribes and perverted justice"], 
+    correctAnswer: "C. They took bribes and perverted justice",
+},
+    {
+    question: "What did Solomon as God for?",
+    answers: ["A. Wisdom", "B. A Wife", "C. Riches and Honor", "D. Victory in battle"],
+    correctAnswer: "A. Wisdom",    
+},
+    {
+    question: "According to I John 4:8, God is _______?",
+    answers: ["A. Love", "B. Peace", "C. Light", "D. Mighty"],
+    correctAnswer: "A. Love",
+    }
 ];
 
 //Game Variables
@@ -48,7 +66,7 @@ var game = {
         $("#counter").html(game.counter);
         if(game.counter<=0){
             console.log("Time is up");
-            game.done();
+            game.gameOver();
         }
     },
     
@@ -67,10 +85,17 @@ var game = {
                     $("#game").append("<input type='radio' name = 'question - "+i+" ' value = '"+questions[i].answers[j]+"'>"+questions[i].answers[j])
                 }
             }
-        
-        
-
     },
+    gameOver: function(){
+        $.each($('input[name="question - 1]":checked')), function(){
+            if($(this).val()==questions[0].correctAnswer) {
+            game.correct++;
+            } else {
+                game.incorrect++;
+            }
+
+        }
+    }
     
 }
 
