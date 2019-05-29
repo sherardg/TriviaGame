@@ -1,17 +1,8 @@
-$("#start").on("click", function() {
-    //remove start game button
-    $("#start").remove();
-    //For loop to append each question a name that is equal to a question and a value that is equal to the answer.
-    //This will store the value with each button
-    for(var i = 0; i < questions.length; i++){
-        $("#game").append('<h2>' + questions[i].question+ '</h2>');
-        for(var j=0; j<questions[i].answers.length; j++){
-            $("#game").append("<input type='radio' name = 'question - "+i+" ' value = '"+questions[i].answers[j]+"'>"+questions[i].answers[j])
-        }
-    }
+//Start Game
+$("#start").on('click',function(){
+    game.start();
 })
-
-
+//Trivia Game Questions
 var questions = [ {
     question: "According to Genesis, who were the first two people?",
     answers:["A. Abraham and Sara", "B. Moses and Miriam","C. Adam and Eve", "D. Will and Grace"],
@@ -42,6 +33,45 @@ var questions = [ {
     answers: ["A. The Parable of the Sower", "B. The Beatitude Parables", "C. The Parable of the Talents", "D. The Parable of the 10 Virgins"],
     correctAnswer: "A. The Parable of the Sower",
 },
-    
+
 
 ];
+
+//Game Variables
+
+var game = {
+    correct: 0,
+    incorrect: 0,
+    counter: 120,
+    countdown: function(){
+        game.counter--;
+        $("#counter").html(game.counter);
+        if(game.counter<=0){
+            console.log("Time is up");
+            game.done();
+        }
+    },
+    
+    start: function(){
+        //set timer to decrease by 1 second
+        timer = setInterval(game.countdown,1000);
+        //Add time remaining to Trivia Game
+        $("#game").prepend('<h2>Remaining Time: <span id="counter">120</span> Seconds</h2>');
+            //remove start game button
+            $("#start").remove();
+            //For loop to append each question a name that is equal to a question and a value that is equal to the answer.
+            //This will store the value with each button
+            for(var i = 0; i < questions.length; i++){
+                $("#game").append('<h2>' + questions[i].question+ '</h2>');
+                for(var j=0; j<questions[i].answers.length; j++){
+                    $("#game").append("<input type='radio' name = 'question - "+i+" ' value = '"+questions[i].answers[j]+"'>"+questions[i].answers[j])
+                }
+            }
+        
+        
+
+    },
+    
+}
+
+
