@@ -1,6 +1,10 @@
 //Start Game
-$("#start").on('click',function(){
+$("#start").on('click', function(){
     game.start();
+})
+
+$(document).on('click', '#done', function(){
+    game.done();
 })
 //Trivia Game Questions
 var questions = [ {
@@ -33,6 +37,7 @@ var questions = [ {
     answers: ["A. The Parable of the Sower", "B. The Beatitude Parables", "C. The Parable of the Talents", "D. The Parable of the 10 Virgins"],
     correctAnswer: "A. The Parable of the Sower",
 },
+
     {
     question: "Where did the prophet Elijah instruct Naaman the leper to wash himself?",
     answers: ["A. In the Temple", "B. In the Dead Sea", "C. In the River Nile", "D. In the Jordan River"],
@@ -55,6 +60,8 @@ var questions = [ {
     }
 ];
 
+
+
 //Game Variables
 
 var game = {
@@ -66,7 +73,7 @@ var game = {
         $("#counter").html(game.counter);
         if(game.counter<=0){
             console.log("Time is up");
-            game.gameOver();
+            game.done();
         }
     },
     
@@ -85,18 +92,109 @@ var game = {
                     $("#game").append("<input type='radio' name = 'question - "+i+" ' value = '"+questions[i].answers[j]+"'>"+questions[i].answers[j])
                 }
             }
+            $("game").append('<br><button id="done">Done</button>');
     },
-    gameOver: function(){
-        $.each($('input[name="question - 1]":checked')), function(){
+
+    //Function to check for correct answers
+    done: function(){
+        $.each($('input[name="question - 0]":checked'),function(){
             if($(this).val()==questions[0].correctAnswer) {
             game.correct++;
             } else {
                 game.incorrect++;
             }
+    })
 
+    $.each($('input[name="question - 1]":checked'),function(){
+        if($(this).val()==questions[1].correctAnswer) {
+        game.correct++;
+        } else {
+            game.incorrect++;
         }
+})
+
+    $.each($('input[name="question - 2]":checked'), function(){
+        if($(this).val()==questions[2].correctAnswer) {
+        game.correct++;
+        } else {
+            game.incorrect++;
+        }
+})
+
+    $.each($('input[name="question - 3]":checked'), function(){
+        if($(this).val()==questions[3].correctAnswer) {
+        game.correct++;
+        } else {
+            game.incorrect++;
+        }
+})
+
+    $.each($('input[name="question - 4]":checked'), function(){
+        if($(this).val()==questions[4].correctAnswer) {
+        game.correct++;
+        } else {
+            game.incorrect++;
+        }
+})
+
+    $.each($('input[name="question - 5]":checked'), function(){
+        if($(this).val()==questions[5].correctAnswer) {
+        game.correct++;
+        } else {
+            game.incorrect++;
+        }
+})
+
+    $.each($('input[name="question - 6]":checked'), function(){
+        if($(this).val()==questions[6].correctAnswer) {
+        game.correct++;
+        } else {
+            game.incorrect++;
+        }
+})
+
+    $.each($('input[name="question - 7]":checked'), function(){
+        if($(this).val()==questions[7].correctAnswer) {
+        game.correct++;
+        } else {
+            game.incorrect++;
+        }
+})
+
+    $.each($('input[name="question - 8]":checked'), function(){
+        if($(this).val()==questions[8].correctAnswer) {
+        game.correct++;
+        } else {
+            game.incorrect++;
+        }
+})
+
+    $.each($('input[name="question - 9]":checked'), function(){
+        if($(this).val()==questions[9].correctAnswer) {
+        game.correct++;
+        } else {
+            game.incorrect++;
+        }
+})
+
+    $.each($('input[name="question - 10]":checked'), function(){
+        if($(this).val()==questions[10].correctAnswer) {
+        game.correct++;
+        } else {
+            game.incorrect++;
+        }
+})
+    this.result();
+},
+    result: function(){
+        clearInterval(timer);
+        $("#game h2").remove();
+        $("game").html("<h2>You'reDone</h2>");
+        $("game").append("<h3>Correct Answers: "+this.correct+"</h3>");
+        $("game").append("<h3>Incorrect Answers: "+this.incorrect+"</h3>")
+        $("game").append("<h3>Unanswered: "+(questions.length-(this.incorrect+this.correct))+"</h3>");
+        console.log(result);
     }
-    
 }
 
 
