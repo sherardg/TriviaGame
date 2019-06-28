@@ -23,7 +23,7 @@ h2 {color: brown;
     margin: 5px;
 }
 
-#game {
+#subwrapper {
 
     background-image: url(../images/scroll-paper.png);
     background-repeat: no-repeat;
@@ -37,3 +37,20 @@ input[type=checkbox], input[type=radio] {
     padding: 0;
     margin: 10px;
 }
+
+button#start{
+    padding: 10px;
+    background: black;
+    color: burlywood;
+    font-weight: bold;
+    border:none;
+}
+
+button#end{
+    padding: 10px;
+    background: black;
+    color: burlywood;
+    font-weight: bold;
+    border:none;
+}
+
