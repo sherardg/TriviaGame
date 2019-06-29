@@ -15,22 +15,28 @@ body{
 }
 
 h1 {color: burlywood;
-    font-size: 30px;
+    font-size: 28px;
+    font-family: 'Playfair Display SC', serif;
+
 }
 
 h2 {color: brown;
-    font-size: 18px;
+    font-size: 22px;
     margin: 5px;
+    font-family: 'Signika', sans-serif;
 }
 
 #subwrapper {
 
     background-image: url(../images/scroll-paper.png);
+    background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
     line-height: 1.5em;
-    padding: 20px;
+    padding: 10px;
+  
 }
+
 
 input[type=checkbox], input[type=radio] {
     box-sizing: border-box;
@@ -40,8 +46,8 @@ input[type=checkbox], input[type=radio] {
 
 button#start{
     padding: 10px;
-    background: black;
-    color: burlywood;
+    background: burlywood;
+    color:  black;
     font-weight: bold;
     border:none;
 }
@@ -49,6 +55,14 @@ button#start{
 button#end{
     padding: 10px;
     background: black;
+    color: burlywood;
+    font-weight: bold;
+    border:none;
+}
+
+button#resetGame{
+    padding: 10px;
+    background:  black; 
     color: burlywood;
     font-weight: bold;
     border:none;

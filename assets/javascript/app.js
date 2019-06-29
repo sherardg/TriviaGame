@@ -7,7 +7,6 @@ $(document).on('click', '#end', function(){
     game.done();
 })
 
-
 //Bible Trivia Game Questions
 var questions = [ {
     question: "According to Genesis, who were the first two people?",
@@ -49,11 +48,11 @@ var questions = [ {
 },
     {
     question: "What were the sins committed by Samuel's two sons?",
-    answers: ["A.They worshipped other gods and disobeyed God", "B. They were dishonest and lustful", "C. They took bribes and perverted justice"], 
+    answers: ["A.They worshipped other gods and disobeyed God", "B. They were dishonest and lustful", "C. They took bribes and perverted justice", "D. They stole money from the people"], 
     correctAnswer: "C. They took bribes and perverted justice",
 },
     {
-    question: "What did Solomon as God for?",
+    question: "What did Solomon ask God for?",
     answers: ["A. Wisdom", "B. A Wife", "C. Riches and Honor", "D. Victory in battle"],
     correctAnswer: "A. Wisdom",    
 },
@@ -63,6 +62,7 @@ var questions = [ {
     correctAnswer: "A. Love",
     
 }];
+
 //Setting up the game
 var game = {
     correct: 0,
@@ -80,10 +80,11 @@ var game = {
         timer = setInterval(game.countdown,1000);
         $("#subwrapper").prepend('<h2>Time Remaining: <span id="counter">120</span> Seconds</h2>');
             $("#start").remove();
+            $("#resetGame").remove();
             for(var i = 0; i < questions.length; i++){
                 $("#subwrapper").append('<h2>' +questions[i].question+'</h2>');
                 for (var j=0; j<questions[i].answers.length;j++){
-                    $("#subwrapper").append("<input type='radio' name='question-"+i+"' value='"+questions[i].answers[j]+"'>"+questions[i].answers[j])
+                    $("#subwrapper").append("<input type='radio' name='question-"+i+"' value='"+questions[i].answers[j]+"'>"+questions[i].answers[j]+'<br>')
                 }
             }
             $("#subwrapper").append('<br> <button id="end">Done</button>')
@@ -167,11 +168,15 @@ var game = {
         clearInterval(timer);
         // remove time remaining section
         $("#subwrapper h2").remove();
-
         $("#subwrapper").html("<h2>Your Finished!</h2>");
         $("#subwrapper").append("<h3>Correct Answers: "+this.correct+"</h3>");
         $("#subwrapper").append("<h3>Incorrect Answers: "+this.incorrect+"</h3>");
         $("#subwrapper").append("<h3>Unanswered: "+(questions.length-(this.incorrect+this.correct))+"</h3>");
     }   
 
+
 }
+
+
+
+
